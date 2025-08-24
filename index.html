@@ -4,8 +4,38 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Payoo Web app</title>
+    <!-- Daisy UI cdn -->
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
+
+    <!-- tailwind cdn -->
+     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
 </head>
-<body>
+<body class="bg-[#f4f5f7] h-[100vh] flex flex-col justify-center items-center">
+    <div class="h-[130px] w-[300px] bg-[url(./assets/bg.png)] bg-cover flex justify-center items-center">
+        <img src="./assets/Group.png" alt="">
+    </div>
+
+    <form class=" w-[350px] p-8 rounded-2xl bg-white">
+        <div>
+            <label class="font-semibold" for="">Mobile Number</label>
+            <input type="text" placeholder="Enter your number" class="input bg-[#f4f5f7] mt-3 rounded-3xl" />
+            
+        </div>
+
+        <div class="mt-5">
+            <label class="font-semibold" for="">4 Digit Pin</label>
+            <input type="text" placeholder="Enter 4 Digit Pin" class="input bg-[#f4f5f7] mt-3 rounded-3xl" />
+        </div>
+
+        <button class="btn text-white mt-5 w-full rounded-3xl font-semibold bg-[#0874f2]" id="loginButton">Login</button>  
+        <!-- type="button" na dile form submit er moto auto refresh hobe or eventListener diye handle korte hobe -->
+
+
+    </form>
     
+
+    <script src="./script.js">
+
+    </script>
 </body>
 </html>
