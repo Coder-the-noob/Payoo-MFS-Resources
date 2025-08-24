@@ -14,14 +14,14 @@
     <!-- font awesome cdn -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" integrity="sha512-DxV+EoADOkOygM4IR9yXP8Sb2qwgidEmeqAEmDKIOfPRQZOWbXCzLC6vjbZyy0vPisbH2SyW27+ddLVCN+OMzQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
-<body class="bg-[#f4f5f7] h-[100vh]">
+<body class="bg-[#f4f5f7] h-[100%]">
     <div class="max-w-lg mx-auto bg-white rounded-b-lg ">
         <div class="border-b-1 border-gray-400 min-h-[50px] flex justify-between items-center p-4">
 
         <div class="flex">
             <img src="./assets/Group.png" alt="" class="w-[50px] h-[50px]">
             <div class="ml-2">
-                <h1 class="font-bold">$<span>45000</span></h1>
+                <h1 class="font-bold">$<span id="available-balance">45000</span></h1>
                 <p class="text-[#08080880]">Available Balance</p>
             </div>
         </div>
@@ -34,7 +34,7 @@
 
     <div class="mt-3 p-4">
         <h1 class="font-extrabold text-2xl">🔥 Welcome to Payooo!</h1>
-        <p class="mt-2 text-[#08080880] text-xl">Enjoy easy and convenient financial services with us. Cashout charge is low and </p>
+        <p class="mt-2 text-[#08080880] text-xl">Enjoy easy and convenient financial services with us. Cashout charge is low and sufficient.</p>
     </div>
 
     <div class="min-h-[200px] grid grid-cols-3 mt-3 gap-4 p-4">
@@ -70,20 +70,46 @@
     </div>
     </div>
 
-    <div class="all-sections-form">
+    <div class="all-sections-form max-w-lg mx-auto">
         <!-- Add Money -->
          <div>
-            <h1>Add Money</h1>
-            <form action="">
-                <div>
-                    <label for="">Select a Bank</label>
+            <h1 class="font-bold my-5">Add Money</h1>
+            <form action="" class="p-8 rounded-2xl bg-white min-w-[350px]">
+                <div class="mb-3">
+                    <label class="font-semibold" for="">Select a Bank</label>
+                    <br>
+                    <select id="bank" class="select  bg-[#f4f5f7] mt-3 rounded-3xl w-full">
+                        <option disabled selected>Select a Bank</option>
+                        <option>AB Bank</option>
+                        <option>Brac Bank</option>
+                        <option>IFIC Bank</option>
+                    </select>
+                
                 </div>
-                <div></div>
-                <div></div>
-                <div></div>
+                <div class="mt-3">
+                     <label class="font-semibold" for="">Bank Account Number</label>
+                     <br>
+                     <input id="account-number" type="text" placeholder="Enter 11 digit account number" class="input bg-[#f4f5f7] mt-3 rounded-3xl w-full" />
+                </div>
+                
+                <div class="mt-3">
+                    <label class="font-semibold" for="">Amount to Add</label>
+                    <br>
+                     <input id="amount" type="text" placeholder="Add Amount to account" class="input bg-[#f4f5f7] mt-3 rounded-3xl w-full" />
+                </div>
+                
+                <div class="mt-3">
+                    <label class="font-semibold" for="">Pin Number</label>
+                    <br>
+                    <input id="pin" type="text" placeholder="Enter 4 Digit Pin number" class="input bg-[#f4f5f7] mt-3 rounded-3xl w-full" />
+                </div>
+
+                 <button class="btn text-white mt-5 w-full rounded-3xl font-semibold bg-[#0874f2]" id="add-money-btn">Add Money</button>  
             </form>
          </div>
 
     </div>
+
+    <script src="./home.js"></script>
 </body>
 </html>
