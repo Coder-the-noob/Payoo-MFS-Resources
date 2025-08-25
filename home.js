@@ -1,5 +1,6 @@
 const validPin = 1234;
 
+// Add Money Form Submission
 document.getElementById('add-money-btn')
 .addEventListener('click', function(event){
     event.preventDefault();
@@ -38,7 +39,50 @@ document.getElementById('add-money-btn')
     document.getElementById('available-balance').innerText = totalNewBalance;
 })
 
-// toggole button
+// withdraw money form submission
+const validAgentPin = 1234;
+document.getElementById('withdraw-money-btn').addEventListener('click', function(event){
+    event.preventDefault();
+    console.log("Withdraw Money button clicked");
+    const agentNumber = document.getElementById('agent-number').value;
+    const withdrawAmount = parseInt(document.getElementById('withdraw-amount').value);
+    const pin = parseInt(document.getElementById('pin-number').value);
+
+    console.log("Agent Number:", agentNumber);
+    console.log("Withdraw Amount:", withdrawAmount);
+    console.log("Pin Number:", pin);
+
+    const availableBalance = parseInt(document.getElementById('available-balance').innerText);
+
+    console.log(availableBalance);
+
+    if(agentNumber.length !== 11) {
+        alert("Please enter a valid 11-digit agent number.");
+        return;
+    }
+
+    if(isNaN(withdrawAmount) || withdrawAmount <= 0) {
+        alert("Please enter a valid amount to withdraw.");
+        return;
+    }
+
+    if(pin !== validAgentPin) {
+        alert("Please enter a valid 4-digit PIN.");
+        return;
+    }
+
+    const totalNewBalance = availableBalance - withdrawAmount;
+
+    if(totalNewBalance < 0) {
+        alert("Insufficient balance.");
+        return;
+    }
+
+    document.getElementById('available-balance').innerText = totalNewBalance;
+});
+
+
+// toggle button
 
 document.getElementById('add-button').addEventListener('click', function(){
     document.getElementById('cash-out-parent').style.display = "none";
