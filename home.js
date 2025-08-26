@@ -11,6 +11,18 @@ function getInputFieldValueNumber(id){
     return inputField;
 }
 
+// function to get innertext
+function getInnerTextValue(id) {
+    const innerText = parseInt(document.getElementById(id).innerText);
+    return innerText;
+}
+
+// function to set innerText
+function setInnerTextValue( value){
+    const element = document.getElementById('available-balance');
+    element.innerText = value;
+}
+
 // Add Money Form Submission
 document.getElementById('add-money-btn')
 .addEventListener('click', function(event){
@@ -26,7 +38,7 @@ document.getElementById('add-money-btn')
     console.log("Amount to Add:", amount);
     console.log("Pin Number:", pin);
 
-    const availableBalance = parseInt(document.getElementById('available-balance').innerText);
+    const availableBalance = getInnerTextValue('available-balance');
 
     console.log(availableBalance);
 
@@ -47,7 +59,7 @@ document.getElementById('add-money-btn')
 
     const totalNewBalance = amount + availableBalance;
 
-    document.getElementById('available-balance').innerText = totalNewBalance;
+    setInnerTextValue(totalNewBalance);
 })
 
 // withdraw money form submission
@@ -63,7 +75,7 @@ document.getElementById('withdraw-money-btn').addEventListener('click', function
     console.log("Withdraw Amount:", withdrawAmount);
     console.log("Pin Number:", pin);
 
-    const availableBalance = parseInt(document.getElementById('available-balance').innerText);
+    const availableBalance = getInnerTextValue('available-balance');
 
     console.log(availableBalance);
 
@@ -89,7 +101,7 @@ document.getElementById('withdraw-money-btn').addEventListener('click', function
         return;
     }
 
-    document.getElementById('available-balance').innerText = totalNewBalance;
+    setInnerTextValue(totalNewBalance);
 });
 
 
