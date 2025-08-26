@@ -108,10 +108,24 @@ document.getElementById('withdraw-money-btn').addEventListener('click', function
 // toggle button
 
 document.getElementById('add-button').addEventListener('click', function(){
-    document.getElementById('cash-out-parent').style.display = "none";
+    const forms = document.getElementsByClassName('form');
+    for(let i = 0; i < forms.length; i++) {
+        forms[i].style.display = "none";
+    }
     document.getElementById('add-money-parent').style.display = "block";
 })
+
 document.getElementById('cash-out-button').addEventListener('click', function(){
-    document.getElementById('add-money-parent').style.display = "none";
+    const forms = document.getElementsByClassName('form');
+    for(let i = 0; i < forms.length; i++) {
+        forms[i].style.display = "none";
+    }
     document.getElementById('cash-out-parent').style.display = "block";
+})
+document.getElementById('transfer-button').addEventListener('click', function(){
+    const forms = document.getElementsByClassName('form');
+    for(let i = 0; i < forms.length; i++) {
+        forms[i].style.display = "none";
+    }
+    document.getElementById('transaction-parent').style.display = "block";
 })
