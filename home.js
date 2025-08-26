@@ -23,6 +23,15 @@ function setInnerTextValue( value){
     element.innerText = value;
 }
 
+// function to handleToggle
+function handleToggle(id){
+    const forms = document.getElementsByClassName('form');
+    for(let i = 0; i < forms.length; i++) {
+        forms[i].style.display = "none";
+    }
+    document.getElementById(id).style.display = "block";
+}
+
 // Add Money Form Submission
 document.getElementById('add-money-btn')
 .addEventListener('click', function(event){
@@ -105,27 +114,68 @@ document.getElementById('withdraw-money-btn').addEventListener('click', function
 });
 
 
+// transfer money form submission
+const validTransferPin = 1234;
+document.getElementById('transfer-money-btn')
+.addEventListener('click', function(event){
+    event.preventDefault();
+    console.log("Transfer Money button clicked");
+
+    const receiverAccount = getInputFieldValueNumber('receiver-account');
+    const transferAmount = getInputValue("transfer-amount");
+    const pin = getInputValue("transfer-pin");
+
+    console.log("Receiver Account:", receiverAccount);
+    console.log("Transfer Amount:", transferAmount);
+    console.log("Pin Number:", pin);
+
+    const availableBalance = getInnerTextValue('available-balance');
+
+    // validation
+    if(receiverAccount.length !== 11) {
+        alert("Please enter a valid 11-digit receiver account number.");
+        return;
+    }
+
+    if(isNaN(transferAmount) || transferAmount <= 0) {
+        alert("Please enter a valid amount to transfer.");
+        return;
+    }
+
+    if(pin !== validTransferPin) {
+        alert("Please enter a valid 4-digit PIN.");
+        return;
+    }
+
+    // calculate new balance
+    const totalNewBalance = availableBalance - transferAmount;
+
+    if(totalNewBalance < 0) {
+        alert("Insufficient balance to transfer.");
+        return;
+    }
+
+    // update balance
+    setInnerTextValue(totalNewBalance);
+
+    alert(`Successfully transferred ${transferAmount} to account ${receiverAccount}.`);
+});
+
+
+
 // toggle button
 
 document.getElementById('add-button').addEventListener('click', function(){
-    const forms = document.getElementsByClassName('form');
-    for(let i = 0; i < forms.length; i++) {
-        forms[i].style.display = "none";
-    }
-    document.getElementById('add-money-parent').style.display = "block";
+     handleToggle('add-money-parent');
 })
 
 document.getElementById('cash-out-button').addEventListener('click', function(){
-    const forms = document.getElementsByClassName('form');
-    for(let i = 0; i < forms.length; i++) {
-        forms[i].style.display = "none";
-    }
-    document.getElementById('cash-out-parent').style.display = "block";
+    handleToggle('cash-out-parent');
 })
+
 document.getElementById('transfer-button').addEventListener('click', function(){
-    const forms = document.getElementsByClassName('form');
-    for(let i = 0; i < forms.length; i++) {
-        forms[i].style.display = "none";
-    }
-    document.getElementById('transaction-parent').style.display = "block";
+    handleToggle('transfer-parent');
 })
+      
+
+
