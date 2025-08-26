@@ -1,14 +1,25 @@
 const validPin = 1234;
 
+// function to get input value
+function getInputValue(id) {
+    const inputField = parseInt(document.getElementById(id).value);
+    return inputField;
+}
+
+function getInputFieldValueNumber(id){
+    const inputField = document.getElementById(id).value;
+    return inputField;
+}
+
 // Add Money Form Submission
 document.getElementById('add-money-btn')
 .addEventListener('click', function(event){
     event.preventDefault();
     console.log("Add Money button clicked");
     const bank = document.getElementById('bank').value;
-    const accountNumber = document.getElementById('account-number').value;
-    const amount = parseInt(document.getElementById('amount').value);
-    const pin = parseInt(document.getElementById('pin').value);
+    const accountNumber = getInputFieldValueNumber("account-number");
+    const amount = getInputValue("amount");
+    const pin = getInputValue("pin");
 
     console.log("Selected Bank:", bank);
     console.log("Account Number:", accountNumber);
@@ -44,9 +55,9 @@ const validAgentPin = 1234;
 document.getElementById('withdraw-money-btn').addEventListener('click', function(event){
     event.preventDefault();
     console.log("Withdraw Money button clicked");
-    const agentNumber = document.getElementById('agent-number').value;
-    const withdrawAmount = parseInt(document.getElementById('withdraw-amount').value);
-    const pin = parseInt(document.getElementById('pin-number').value);
+    const agentNumber = getInputFieldValueNumber('agent-number');
+    const withdrawAmount = getInputValue("withdraw-amount");
+    const pin = getInputValue("pin-number");
 
     console.log("Agent Number:", agentNumber);
     console.log("Withdraw Amount:", withdrawAmount);
